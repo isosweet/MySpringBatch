@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
+	<batch:job 
+			   <!-- Job的唯一标识，在整个运行上下文中不允许重复-->
+			   id="" 
+			   
+			   <!-- 定义当前Job是否是抽象的。True表示当前Job是抽象的，不能被实例化 -->
+			   abstract="true" 
+			   
+			   <!-- 作业参数递增器，只有在org.springframework.batch.core.launch.JobOperator.startNextInstance(String jobName)方法中使用 -->
+			   incrementer="" 
+			   
+			   <!-- 定义该Job运行期间使用的Job仓库，默认使用名字为jobRepository的Bean -->
+			   job-repository="" 
+			   
+			   <!--  定义当前Job的父Job。Job可以从其他Job继承。通常在父Job中定义共有的属性，在子Job中定义特有的属性。 -->
+			   parent=""
+			   
+			   <!-- 定义当前作业是否支持重启，默认值是true，表示支持重启 -->
+			   restartable="">
+		
+		<!-- Step执行的条件判断器，根据decision可以动态的决定后续执行的Step -->
+		<batch:decision decider="" id=""></batch:decision>
+		
+		<!--  -->
+		<batch:description></batch:description>
+		
+		<!-- 引用独立配置的作业步流程 -->
+		<batch:flow parent="" id=""></batch:flow>
+		
+		<!-- 定义Job执行时的拦截器。 -->
+		<batch:listeners></batch:listeners>
+		
+		<!-- 定义并行的Step -->
+		<batch:split id=""></batch:split>
+		
+		<!-- 定义Job的作业步 -->
+		<batch:step id=""></batch:step>
+		
+		<!-- 定义JobParameters 的验证器 -->
+		<batch:validator></batch:validator>
+	</batch:job>
+	
+
+</beans>
